@@ -1,0 +1,145 @@
+session
+-----------
+- server
+- storage
+- network
+
+Domain Controller
+- Authorization
+- Authentication
+
+data center
+- server
+- storage
+- network
+	- firewall
+	- routers
+	- switches
+	- cables
+- racks
+
+Hypervisor
+- a tool to achieve virtualization
+- types
+	- type 1
+	- type 2
+
+OSI model
+-----------
+- Open System Interconnect
+- its a refference model
+- this model contains 7 layers in it.
+	- Physical layer
+	- Data Link layer		--> Switches work here
+	- Network layer			--> Router works here, L3 switches
+	- Transport layer
+	- session layer
+	- presentation layer
+	- application layer
+	
+NAT 
+	- Network Address Translation
+	- translating Private IP address to Public IP address.
+	
+Speed ---> IOPS (Input Output Per Sec)
+	HDD 
+		- 150 IOPS
+		- slower than SSD
+		- cheaper than SSD
+	SSD 
+		- 1.5 Million IOPS
+		- faster than HDD
+		- Costlier than HDD
+		
+
+Containerization:
+------------------
+- 2-3 sec to restart/power-on
+- self-heal
+
+
+Cloud:
+------
+- Pay as you go
+- cloud is renting the services (compute, network, storage, etc) over the internet
+- SLA = Service Level Agreement
+
+Cloud Deployment Models:
+	- Public Cloud
+		- any one can access
+	- Private cloud
+		- for people within organization
+	- Hybrid cloud
+		- combo public + private cloud
+		
+Cloud / Vendor / Cloud Vendor:
+	1. AWS (Amazon Web Service)
+	2. Microsoft Azure				--> https://portal.azure.com/
+	3. GCP (Google Cloud Platform)
+	
+Ques - how much amount (approx), I need to pay to run 30 VMs each of 8GB RAM, for 1 month?
+
+BYOL - Bring Your Own Lic
+
+
+
+Software for networking:
+-----------------------
+	- Cisco Packet Tracer
+	- GNS3 (Graphical Network Simulator)
+	
+	
+	hub		-> dumb
+	switch	-> intelligent 
+	
+ARP
+	- Address Resolution Protocol
+	
+switch maintains MAC/CAM table
+
+Routing protocol
+- OSPF	-> unlimited routers
+- RIP	-> 15+1 = 16
+
+
+ipconfig /release		--> release old IP address
+ipconfig /renew			--> get a new IP address
+
+Ques - How an IP is assigned to a computer?
+-------------------------------------------
+- 3 ways to assign an IP to a computer
+	1. Manual (static IP)
+		- admin needs to assign IP manually to all the PCs.
+		- good for limited number of computers.
+		
+	2. Automatic 
+		- no human intervention is required.
+		- automatically IP will be assigned to the system.
+		- it is possible because of 
+			- DHCP (Dynamic Host Configuration Protocol)
+			- DHCP works on port 67,68
+			- DHCP works on Client-Server architecture.
+			- DHCP uses "DORA" process
+				D = Discover
+				O = Offer
+				R = Request
+				A = Acknowledgement
+					
+	3. APIPA
+		- Automatic Private IP Addressing
+		- when DHCP server is unable to give the IP address, bcoz of:
+			1. DHCP server is inactive
+			2. DHCP scope is full
+		- in this case, client automatically allocates a "specific IP" range to itself. called as APIPA.
+		- specific IP range (169.254.X.X) - 169.254.1.1 - 169.254.255.255 
+		- with this APIPA address, you cannot communicate with any machine within the network.
+		- with this APIPA address, you cannot ping another computer
+		- with this APIPA address, you cannot share any data on the network
+		- APIPA can be resolved
+			1. ensure DHCP server is working fine.
+			2. ensure DHCP server has enough IP addresses in scope.
+			3. release the IP 	-> ipconfig /release
+			4. renew the IP 	-> ipconfig /renew
+			5. if nothing works out, set the IP MANUALLY.
+			
+
