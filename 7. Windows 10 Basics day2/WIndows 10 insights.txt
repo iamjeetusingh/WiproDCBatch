@@ -1,0 +1,127 @@
+Operating system
+----------------
+	- Windows OS
+		- server
+			- Windows NT
+			- Windows 2003
+			- Windows 2008
+			- Windows 2008R2	(release v2)
+			- Windows 2012
+			- Windows 2012R2
+			- Windows 2016
+			- Windows 2019
+			- Windows 2022
+			- Windows 2025
+		- client
+			- Windows XP
+			- Windows Vista
+			- Windows 7
+			- Windows 8.0
+			- Windows 8.1
+			- Windows 10
+			- Windows 11
+			
+Windows 7 & Windows 10
+-------------------------
+1. Boot time
+	win7	-> more time 
+	win10	-> less time to boot
+	
+2. installing the OS
+	win7	-> 45mins
+	win10	-> 15mins
+	
+Registry Keys
+	- a database of your OS
+	- 
+	
+Boot Sequence
+--------------
+	- search for the OS in the following places, in the following order.
+		1. HDD/IDE	--> search for the OS in the HDD (already installed)
+		2. CD/DVD	--> boot (install the OS) from CD/DVD
+		3. PXEboot	--> check the OS in the network (WDS)
+		
+
+
+
+HDD 
+--> partitions
+	1. Primary partitions
+		- for storing the Operating System
+	2. Extended partitions
+		- cannot store the OS
+		- they can be further created into LOGICAL partitions
+
+
+MBR vs GPT
+------------
+MBR 
+	- Master Boot Record
+	- 512 bytes
+	- Primary Partitions: 4
+	- HDD can be max upto: 2TB 
+	
+GPT
+	- GUID partition table
+		- Globally Unique IDentifier
+	- 512 bytes
+	- Primary Partitions: 128
+	- HDD can be max upto: 18EB (18x10^6GB = 18000000GB)
+	
+	MBR   <-->   data loss  <-->   GPT
+
+Hyper-V
+----------
+	- its a hypervisor
+	- it is type 1 & type 2
+		- type 1 - Windows Server
+		- type 2 - Windows Client
+
+Ques --> Can we run multiple hypervisors on a single system?
+	- NO (Windows Hyper-V & VMWare Workstation)
+	
+in case of restart (multiple times)
+	- press CTRL+ALT+F3
+	- wait for "administrator" user to get logged in
+	- once logged in, open powershell (as administrator)
+	- & type below commands:
+		- net user administrator /active:yes
+		- net user /add jeetu jeetu@123
+		- net localgroup administrators jeetu /add
+	- change the password for administrator user.
+	- sign out from administrator account and login with jeetu user.
+	
+Types of users in windows
+	1. Administrator
+		- has ALL the powers to do ANYTHING on windows machine.
+	2. Guest user
+		- has very limited powers.
+		- aka local account
+	3. Delegated administrator
+		- are the users with limited administrative priviledges.
+		- like
+			- storage admin
+			- network admin
+
+hypervisor (type 2) apart from Hyper-V
+	VMWare workstation	-> free 
+	Oracle virtual box	-> free
+	
+	
+	
+=================================================================
+WARNING - DO NOT TRY THIS ON PERSONAL PC OR THE LAB GIVEN TO YOU.
+=================================================================
+to set the IP address on the *******Virtual Machine********:
+	1. Static IP address (Manually)
+	2. DHCP server (Dynamically)	--> default
+
+Remote desktop
+----------------
+	- GUI
+		- Remote Desktop Protocol --> 3389
+		- it works in GUI ways
+	- CLI
+		- PowerShell Remoting	  --> 5985 (HTTP) /5986 (HTTPS)
+		
