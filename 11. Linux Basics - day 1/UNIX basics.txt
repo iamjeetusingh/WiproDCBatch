@@ -1,0 +1,146 @@
+UNIX
+-----
+	- Linux is derived from UNIX OS
+	- UNiplexed Information Computing System (UNICS -> UNIX)
+	- release on "1st Jan 1970"
+	- earlier (1969, 68..), it was used by big companies, banks, etc..
+	- epoch date -> difference of dates between 1st jan 1970 & today.
+		11 Feb 2025 -> 20,130 days
+	- developed by Dennis Ritchie & Kemp Thomson in AT & T Bell Labs.
+	- UNIX is build using "C language".
+	
+- UNIX is hardware dependent.
+	IBM's AIX 	--> IBM's hardware
+	HP's HPUX	-->	HP hardware
+	
+Linux OS
+	- was developed by Linus Benedict Torwalds.
+	- introduced on 17th Sept 1991
+	- linux is derived from UNIX OS
+	- linux is hardware independent.
+	
+Secure
+	- SELinux
+		- Security Enhanced Linux
+		- any request (by user, process, application) that might change the linux kernel is by default denied.
+
+Linux	--> opensource (free to use, free to share, free to download, can change the source code)
+
+UNIX	--> freeware (free to use, free to share, free to download, can not change the source code)
+
+
+OLD OS:
+-------
+	- CentOS 3,4,5,6
+	- Boot time: 40sec
+	- 1st service name: INIT
+	
+NEW OS:
+-------
+	- CentOS 7,8,9
+	- Boot time: 20sec
+	- 1st service name: SYSTEMD
+	
+Booting process of Linux:
+--------------------------
+1. Power On the machine
+2. control goes to BIOS
+	BIOS --> POST test (Power On Self Test)
+3. control goes to MBR
+	- MBR (master boot record)
+	- it has the address of OS
+4. control goes to GRUB (GRand Unified Boot loader)
+	- shows the list of operating system(s)
+	- version: GRUB 2.0
+5. kernel
+	- it loads the operating system to RAM
+	- it starts the 1st process of linux -> SYSTEMD (pid:1) (new OS)
+	- it starts the 1st process of linux -> INIT    (pid:1) (old OS)
+6. Runlevel
+	- the mode in which the OS must be started.
+	- there are 7 modes :
+		-------------------------------------------------------------------
+		   OLD   |    MEANING							|  NEW
+		-------------------------------------------------------------------
+		- init 0 = shutdown / halt						= poweroff.target
+		- init 1 = single maintainence mode				= multi-user.target
+		- init 2 = multi-user maintainence mode			= multi-user.target
+		- init 3 = fully function CLI mode.				= multi-user.target
+		- init 4 = unused till date / future purpose	= multi-user.target
+		- init 5 = init 3 + GUI							= graphical.target
+		- init 6 = reboot								= reboot.target
+		-------------------------------------------------------------------
+7. Login screen
+	- username 
+	- password
+	
+
+in windows 	-> folder
+in linux	-> directory	
+
+File system Hierarchy Standard(FHS):
+=========================================
+/(slash, forward slash, root)
+	- /bin	= binary directory, contains regular user cmds in it.
+	- /sbin	= super binary directory, contains ROOT user cmds in it.
+	- /boot = contains all bootable files in it, minimum size = 350MB
+	- /home = home directory of regular user
+				- /home/sanjey
+				- /home/nikitha
+				- /home/charan
+	- /root	= home directory for ROOT user (there's only ONE root per server).
+	- /dev	= contains device related files in it.
+				- cd/dvd -> /dev/sr0
+				- HDD    -> /dev/sda
+	- /mnt	= mount point for devices
+				- pendrive -> /mnt/abc
+	- /etc	= it contains all the configuration files		
+				- firewall
+				- user
+				- network
+				- package
+				- password
+	- /var	= variable length, it contains LOGS in it.
+	- /usr	= user installed apps are present here.
+	- /proc = it contains all running processes in it.
+	- /tmp	= it contains temporary files & directories in it.
+	- /lib 	= its for developers, 32bit architecture
+	- /libx64	= its for developers, 64bit architecture
+	- /run	= similar to /mnt
+	- /opt	= similar to /usr
+	
+KDump
+- Kernel Dumping Mechnaism
+- contains the reason the server crash in a small (161MB) space.
+
+
+Task - install CLI (text-based mode) of centos 9 using same resources allocated for GUI.
+
+Commands:
+	- ls
+	- ls -a
+	- ls -l
+	- ls -i
+	- ls /
+	- du (du -sh /*)
+	- df -h
+	- df -hT
+	- mkdir
+	- rmdir
+	- rm
+	- cp
+	- mv
+	- touch
+	- cat
+	- vi editor
+	- vim editor
+	- nano editor
+	
+	
+GUI -> CLI
+	# systemctl  set-default  multi-user.target
+	# init 6
+	
+CLI -> GUI
+	# systemctl  set-default  graphical.target
+	# init 6
