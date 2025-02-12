@@ -1,0 +1,278 @@
+Q: What's the major difference between linux & UNIX?
+Q: Which one (Linux or UNIX) is best? & why?
+Q: Which one (Linux or Windows) is best? & why?
+######################################################
+Commands:
+	- ls
+		- listing content in the directory
+	- ls -a
+		- lists the hidden & visible content, a = all.
+	- ls -l
+		- lists the details of file or directory
+			- permissions
+			- timestamp
+			- owner
+			- group
+			- name
+			- size
+			- type of file
+	- ls -i
+		- "i" = inode.
+		- it contains the details of a file.	
+			- permissions
+			- owner
+			- group owner
+			- size
+	- ls /
+		- listing content of "/" directory
+	- du (du -sh /*)
+		- disk usage
+			- s = summary
+			- h = human readable format (kb, mb, gb, tb, pb)
+	- df -h
+		- mounted disks / disk available spaces
+			- h = human readable format (kb, mb, gb, tb, pb)
+	- df -hT
+		- mounted disks / disk available spaces
+			- h = human readable format (kb, mb, gb, tb, pb)
+			- T = type of file system(ext3, ext4, xfs, cdfs)
+	- mkdir
+		- create a new directory
+	- rmdir
+		- remove an empty directory
+	- rm
+		- removes file or directory (empty + non-empty)
+	- cp
+		- copy file or directory
+	- mv
+		- move the file or directory
+		- rename a file of directory
+	- touch
+		- creates an empty file.
+		- update the timestamp (last modified time) of a file or difference
+	- cat
+		- create a file
+		- view the file data
+		- append the data
+		- override the data
+		- concatenate the content of a file into another.
+	- vi editor
+		- a text editor to create/modify the file's content.
+		- VIrtual editor
+		- is present in all types of linux/unix OS.
+	- vim editor
+		- a text editor to create/modify the file's content.
+		- Virtual editor IMproved
+		- its present by-default in GUI OS.
+	- nano editor
+		- a text editor to create/modify the file's content.
+		- by-default its the editor in Ubuntu OS.
+		
+- file mgmt	
+	- create
+	- modify
+	- delete
+	- copy/move
+	- hide/unhide
+- directory mgmt
+	- create
+	- enter into a directory
+	- path
+		- absolute path
+			- always starts from "/"
+			- it will show the exact path, from begining till the end.
+		- relative path
+			- works around the current location (pwd).
+	- delete
+- Permission
+	- regular permissions
+	- ACLs (Access Control List)
+	- Special permissions
+- User mgmt
+	- create
+	- modify
+	- delete
+	- Sudo user
+- Process mgmt
+	- ps
+	- pstree
+	- top
+	- kill
+	- pgrep
+- service mgmt
+	- start
+	- stop
+	- restart
+	- enable
+	- disable
+	- isactive
+- Storage mgmt
+	- file systems
+	- simple partition
+	- LVM
+- Package Mgmt
+	- install
+	- update
+	- information
+	- remove
+- backup tools
+	- tar
+	- gzip
+	- bzip2
+- Network configuration
+	- file
+	- cmds
+	- GUI
+	
+#######################################################################
+- 7 types of files in linux:
+	1. "-"	--> regular file
+	2. "d"	--> directory
+	3. "l"	--> symbolic link (hard link & soft link)
+	4. "c"	--> character file
+	5. "b"	--> block file
+	6. "p"	--> named Pipe file
+	7. "s"	--> socket file
+
+
+
+- Permission
+	- regular permissions
+		- read
+		- write
+		- execute
+	- ACLs (Access Control List)
+		- granular level permissions
+		- 2 cmds:
+			1. getfacl		--> list the current ACLs
+			2. setfacl		--> changes the ACLs for user & groups
+	- Special Permissions
+		- SUID
+		- SGID
+		- Sticky bit
+
+Regular permissions:
+---------------------
+	- read		-> r	--> you can only read the content			-> 4
+	- write		-> w	--> you can read + write into the file		-> 2
+	- execute	-> x	--> you can execute the file as a script	-> 1
+	-------------------------------------------------------------------------
+																	-> 7
+	-------------------------------------------------------------------------
+
+3 types of users under permissions:
+	1. owner (u)	-> who create the file
+	2. group (g)	-> to which group, it belongs to.
+	3. other (o)	-> excluding owner & group, everyone is considered as others.
+	----------------------
+	   all   (a)	-> all (meaning owner, group & others)
+	----------------------
+
+Commands to change the permissions of a file/directory:
+# chmod     <permissions>     <name-of-file/directory>
+
+permissions can be changed in 2 ways:
+	1. Numerical method (numbers)
+	2. Symbolical/alphabetical method (alphabets)
+	
+ex of Numerical method:
+	# chmod    777   file/directory		-> read, write, execute
+	# chmod    666   file/directory		-> read & write, no execute
+	# chmod    000   file/directory		-> no read, no write, no execute
+
+
+Task
+-----
+create a file /salary. with the 
+	- owner permissions as rw, 
+	- group permissions as r,
+	- other with no permissions
+	solution: # chmod  640  /salary.txt
+	
+
+Symbolical/alphabetical method:
+-----------------------------------
+# chmod     <alphabets>     <name-of-file/directory>
+# chmod    <<u/g/o/a><+-=><r/w/x>>  <name-of-file/directory>
+
+Task
+-----
+create a file /salary. with the 
+	- owner permissions as rw, 
+	- group permissions as r,
+	- other with no permissions
+
+changing the ownership/groupownership of a file/directory:
+-----------------------------------------------------------
+to change the owner:
+	# chown  <username>  <file/directory>
+	
+to change the group owner:
+	# chgrp  <groupname>  <file/directory>
+	# chown  :<groupname>  <file/directory>
+	
+to change owner & group owner together:
+	# chown  <username>:<groupname>  <file/directory>
+	
+ACLs:
+------
+	- access control list
+	- this provides the detailed access to a file/directory.
+	- 2 cmds:
+		1. getfacl		--> list the current ACLs
+			# getfacl  /demo.txt
+		
+		2. setfacl		--> changes the ACLs for user & groups
+			group:
+				# setfacl   -m   g:<groupname>:<permissions>  <file/directory>
+			user:
+				# setfacl   -m   u:<username>:<permissions>  <file/directory>
+
+- Special Permissions
+	- SUID (Set User IDentification)
+	- SGID (Set Group IDentification)
+	- Sticky bit
+	
+User Management:
+----------------
+- create
+	# useradd <options> <username>
+- modify
+	# usermod <options> <username>
+- delete
+	# userdel    <username>		--> partial deletion
+		- this only deletes the user's login credentials (username & password)
+		- user's data will be available
+	# userdel -r <username>		--> full deletion
+		- -r = recussion
+		- it deletes
+			- username
+			- password
+			- home directory
+			- data
+files in user mgmt:
+-------------------
+	1. /etc/passwd
+		- contains user's detailed information in 7 columns
+		- here data is seperated using ":"
+		- 7 columns are:
+			1. login name
+			2. password	--> pwd is stored in another file (/etc/shadow)
+			3. User ID
+			4. Group ID
+			5. Comment/description/full name
+			6. home directory of that user
+			7. default shell allocated to the user
+	2. /etc/shadow
+		- contains user's password information & policy in 9 columns.
+		- here data is seperated using ":"
+		- 9 columns are:
+			1. login name
+			2. true encrypted password
+			3. last password change
+			4. Minimum password age
+			5. Maximum password age
+			6. Warning days
+			7. Account inactive days
+			8. Account expiration
+			9. Unused till date/kept for future purpose.
