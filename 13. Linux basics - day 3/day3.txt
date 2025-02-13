@@ -1,0 +1,309 @@
+    1  whoami
+    2  hostname
+    3  hostnamectl   set-hostname   server.jeetusingh.in
+    4  hostname
+    5  history 
+    6  ifconfig
+    7  ifconfig  |  grep  inet
+    8  echo $SHELL
+    9  cat  /etc/shells 
+   10  cat     /etc/os-release 
+   11  history 
+   12  systemctl   set-default   multi-user.target
+   13  init 6
+   14  systemctl   set-default   graphical.target
+   15  init 6
+   16  date
+   17  cal
+   18  cal 2025
+   19  history 
+   20  history   >   /day1Cmds.txt
+   21  cat  /day1Cmds.txt 
+   22  ls
+   23  ls -l
+   24  cd   /dev
+   25  ls   -l
+   26  cd
+   27  pwd
+   28  ls
+   29  mkdir  basics
+   30  ls
+   31  cd  Basics
+   32  cd basics/
+   33  pwd
+   34  touch  blankFile.txt
+   35  ls
+   36  cat   blankFile.txt 
+   37  touch  f{1..10}.txt
+   38  ls
+   39  ls   |   wc -l
+   40  ls
+   41  rm   -f   f*.txt
+   42  ls
+   43  cat  >  catFile.txt
+   44  cat    catFile.txt
+   45  cat  >  catFile.txt
+   46  cat    catFile.txt
+   47  cat  >>  catFile.txt
+   48  cat    catFile.txt
+   49  cat   >   1.txt
+   50  cat   >   a.txt
+   51  cat  1.txt   a.txt   >  another.txt
+   52  cat another.txt 
+   53  nano  nanoFile.txt
+   54  cat nanoFile.txt 
+   55  cat >> nanoFile.txt 
+   56  cat nanoFile.txt 
+   57  vi    viFile.txt
+   58  cat viFile.txt 
+   59  >viFile.txt 
+   60  vi    viFile.txt
+   61  cat  viFile.txt 
+   62  vim  vimFile.txt
+   63  cat viFile.txt 
+   64  cat vimFile.txt 
+   65  vi   /etc/passwd
+   66  vim   /etc/passwd
+   67  ls
+   68  mkdir   dir1
+   69  ls
+   70  rmdir  dir1
+   71  ls
+   72  mkdir   dir2
+   73  touch  dir2/readme.txt
+   74  rmdir  dir2
+   75  rm  -rf  dir2/
+   76  ls
+   77  mkdir  d1
+   78  ls
+   79  rmdir  d1
+   80  ls
+   81  mkdir  d2
+   82  touch  d2/haha.txt
+   83  ls d2
+   84  rmdir  d2
+   85  rm  -rf  d2
+   86  ls
+   87  pwd
+   88  cd  ..
+   89  pwd
+   90  cd  /tmp
+   91  pwd
+   92  cd  ..
+   93  pwd
+   94  cd /root
+   95  pwd
+   96  cd /tmp
+   97  cd /root
+   98  pwd
+   99  ls
+  100  man  ls
+  101  man  rmdir
+  102  man rm
+  103  pinfo  rm
+  104  cd basics/
+  105  ls
+  106  mkdir   d1
+  107  pwd
+  108  ls   /root/basics/d1/
+  109  ls   d1/
+  110  cp   a.txt   d1/
+  111  ls   d1/
+  112  ls   /root/basics/d1/
+  113  ls
+  114  mv   /root/basics/blankFile.txt     /root/basics/d1/
+  115  ls
+  116  ls d1/
+  117  ls
+  118  mv   a.txt    alphabet.txt
+  119  ls
+  120  mv d1   dir1
+  121  ls
+  122  rm dir1/
+  123  rm  -r   dir1/
+  124  rm  -rf   dir1/
+  125  ls
+  126  rm  -rf   dir1/
+  127  rm 1.txt 
+  128  rm -f 1.txt 
+  129  mkdir    d1/d2/d3/d4/d5/d6/d7
+  130  mkdir   -p    d1/d2/d3/d4/d5/d6/d7
+  131  ls d1
+  132  ls d1/d2
+  133  ls -R  d1
+  134  ls
+  135  rm  -f   *.txt
+  136  ls
+  137  rm -rf d1
+  138  ls
+  139  touch  t1; mkdir  d1; ls
+  140  ls -l
+  141  chmod   777   t1
+  142  ls -l
+  143  chmod   666    t1; ls -l
+  144  touch  /salary.txt
+  145  ls -l /salary.txt 
+  146  chmod   640   /salary.txt 
+  147  ls -l /salary.txt 
+  148  touch   /salary2.txt
+  149  ls -l /salary2.txt 
+  150  chmod   o-r   /salary2.txt 
+  151  ls -l /salary2.txt 
+  152  chmod  ugo=rwx  /salary2.txt 
+  153  ls -l /salary2.txt 
+  154  chmod   u=rw,g=r,o-rwx  /salary2.txt 
+  155  ls -l /salary2.txt 
+  156  chown   jeetu   /salary2.txt 
+  157  ls -l /salary2.txt 
+  158  chgrp  wheel  /salary2.txt 
+  159  ls -l /salary2.txt 
+  160  chown   root:root   /salary2.txt 
+  161  ls -l /salary2.txt 
+  162  chown   :wheel  /salary2.txt 
+  163  ls -l /salary2.txt 
+  164  touch  /reports.txt
+  165  ls -l /reports.txt 
+  166  groupadd   wb42
+  167  useradd -G wb42  vijay
+  168  useradd -G wb42  bhavana
+  169  getent group wb42
+  170  ls -l /reports.txt 
+  171  chgrp    wb42   /reports.txt 
+  172  chmod   660  /reports.txt 
+  173  ls -l /reports.txt 
+  174  touch  /demo.txt
+  175  groupadd avengers
+  176  useradd -G avengers thor
+  177  useradd -G avengers ironman
+  178  useradd -G avengers spiderman
+  179  useradd  thanos
+  180  getent group avengers
+  181  chgrp  avengers  /demo.txt 
+  182  chmod 660  /demo.txt 
+  183  ls -l /demo.txt 
+  184  chmod   ug+x  /demo.txt 
+  185  ls -l /demo.txt 
+  186  whoami
+  187  pwd
+  188  su - thor
+  189  groupadd justiceleague 
+  190  useradd -G justiceleague batman
+  191  useradd -G justiceleague superman
+  192  getent group justiceleague
+  193  ls -l /demo.txt 
+  194  chgrp  justiceleague /demo.txt 
+  195  ls -l /demo.txt 
+  196  getfacl  /demo.txt
+  197  chgrp  avengers /demo.txt 
+  198  getfacl  /demo.txt
+  199  setfacl  -m  g:justiceleague:r--  /demo.txt 
+  200  ls -l /demo.txt 
+  201  getfacl  /demo.txt
+  202  cd
+  203  mkdir   /backupOfEtc
+  204  cp   -ar   /etc/*    /backupOfEtc/
+  205  du -sh   /etc/   /backupOfEtc/
+  206  vim  /etc/passwd
+  207  ls
+  208  cat > haha.txt
+  209  ls
+  210  cat  haha.txt 
+  211  cd /tmp
+  212  cat  haha.txt 
+  213  cd
+  214  ls
+  215  cat  /root/haha.txt 
+  216  cd /tmp
+  217  cat  /root/haha.txt 
+  218  cd /boot
+  219  cat  /root/haha.txt 
+  220  cd
+  221  vim /etc/passwd
+  222  tail /etc/passwd
+  223  useradd  joker
+  224  vim /etc/passwd
+  225  cat  /etc/passwd | grep joker
+  226  grep  joker  /etc/passwd
+  227  chfn  joker
+  228  cat  /etc/passwd | grep joker
+  229  usermod -c "Why so seriouscat  /etc/passwd | grep jokercat  /etc/passwd | grep joker" joker
+  230  man usermod
+  231  cat  /etc/passwd | grep joker
+  232  usermod -c "Why so serious" joker
+  233  cat  /etc/passwd | grep joker
+  234  man usermod
+  235  cat  /etc/shells 
+  236  cat  /etc/passwd | grep joker
+  237  chsh joker
+  238  cat  /etc/passwd | grep joker
+  239  usermod -s /bin/csh joker
+  240  cat  /etc/passwd | grep joker
+  241  useradd -u 5000 - c "Italian Stallion" -s /bin/sh   rocky
+  242  useradd -u 5000 -c "Italian Stallion" -s /bin/sh   rocky
+  243  grep rocky /etc/passwd
+  244  tail /etc/passwd
+  245  userdel  batman
+  246  cat /etc/passwd | grep batman
+  247  useradd batman
+  248  userdel -r rocky
+  249  userdel -r joker
+  250  userdel -r thor
+  251  userdel -r thanos
+  252  userdel -r ironnam
+  253  userdel -r ironman
+  254  userdel -r spiderman
+  255  su - bhavana
+  256  vim  /etc/sudoers
+  257  visudo 
+  258  su - bhavana
+  259  visudo 
+  260  EDITOR=vim visudo
+  261  su - superman
+  262  EDITOR=vim visudo
+  263  useradd tomar
+  264  passwd tomar
+  265  EDITOR=vim visudo
+  266  su - tomar
+  267  groupadd wiprob42
+  268  useradd -G wiprob42 user1
+  269  useradd -G wiprob42 user2
+  270  getent group wiprob42
+  271  history 
+  272  mkdir  /notification
+  273  ls -ld /notification
+  274  getfacl   /notification
+  275  groupadd HR
+  276  groupadd Accounts
+  277  setfacl  -m  g:HR:rw-  /notification
+  278  setfacl  -m  g:Accounts:r--  /notification
+  279  getfacl   /notification
+  280  vim /etc/shadow
+  281  passwd
+  282  vim /etc/shadow
+  283  df
+  284  df -h
+  285  cd /
+  286  ls
+  287  du -sh  /*
+  288  lsblk
+  289  cd
+  290  lsblk
+  291  ls -l /sys/class/scsi_host
+  292  grep  mpt   /sys/class/scsi_host/host*/proc_name
+  293  echo "- - -" > /sys/class/scsi_host/host0/scan
+  294  lsblk
+  295  fdisk  /dev/sdb
+  296  lsblk
+  297  mkfs.xfs   /dev/sdb1
+  298  mkdir   /stddisk
+  299  # mount    <what-to-mount>     <where-to-mount>
+  300  mount   /dev/sdb1    /stddisk
+  301  df -h
+  302  cd /stddisk/
+  303  touch t1 t2 t3
+  304  ls
+  305  lsblk
+  306  cd
+  307  df -h
+  308  df -hT
+  309  history  > day3.txt

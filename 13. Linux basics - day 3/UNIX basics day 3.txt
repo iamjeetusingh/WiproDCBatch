@@ -1,0 +1,165 @@
+Path
+	- absolute path
+		- it starts with "/"
+		- it tells linux path from begining till the end.
+		- ex:
+			- /etc/passwd
+	- relative path
+		- works around the current location
+		- ex:
+			- passwd
+			
+files in user mgmt:
+-------------------
+	1. /etc/passwd
+		- contains user's detailed information in 7 columns
+		- here data is seperated using ":"
+		- 7 columns are:
+			1. login name
+			2. password	--> pwd is stored in another file (/etc/shadow)
+			3. User ID
+			4. Group ID
+				- when a user gets created, it also gets a group ID.
+				- by default user id is equal to group ID, until you create another group.
+			5. Comment/description/full name
+				- describing the user.
+				- cmds to change comment:
+					1. chfn <username>
+					2. usermod -c "" <username>
+			6. home directory of that user
+				root	-> /root
+				jeetu	-> /home/jeetu
+				thor	-> /home/thor
+			7. default shell allocated to the user
+				default shell	->	/bin/bash
+				change it		-> 	chsh <username>, 
+									usermod -s "" username
+	2. /etc/shadow
+		- contains user's password information & policy in 9 columns.
+		- here data is seperated using ":"
+		- 9 columns are:
+			1. login name
+			2. true encrypted password
+			3. last password change
+			4. Minimum password age
+			5. Maximum password age
+			6. Warning days
+			7. Account inactive days
+			8. Account expiration
+			9. Unused till date/kept for future purpose.
+			
+Task
+-------
+you have to create a user with the following details:
+	login name		: rocky
+	user id			: 5000
+	default shell	: /bin/sh
+	comment			: Italian Stallion
+NOTE: you cannot use USERMOD command.
+
+SUDO user management:
+----------------------
+sudo user = regular user ($) + limited root privileges
+
+In windows		|	in Linux
+----------------|---------------
+Administrator	|	Root
+Delegated admin	|	sudo user
+Guest users		|	regular user
+
+to work with sudo users:
+	1. file - read-only
+		# /etc/sudoers
+	2. command
+		# visudo
+		
+Visudo:
+----------
+	1. Give FULL access (equal to ROOT user) to a regular user.
+	2. Give pre-defined access (Networking, storage, services).
+	3. Give complete CUSTOM access.
+	
+Task
+------
+1. Create a user with your last name and make it sudo user with admin privileges (like Networking, Storage, Services & Visudo command)  & verify after you login to this user.
+
+2. Add a group WiproB42 and add 2 users (user1 & user2) and list all the users that are present in the group.
+
+3. Create a directory (/notifications) and provide access of HR and Accounts groups (create if not available) with read & write access for HR & read only access for Accounts team.
+
+Password for a user in linux:
+-------------------------------
+/etc/shadow
+	- contains user's password information & policy in 9 columns.
+	- here data is seperated using ":"
+	- 9 columns are:
+		1. login name
+		2. true encrypted password
+			a. hashing algo (SHA512, MD5)	--> creating encrypted pwd.
+				SHA512	-> $6
+				MD5		-> $1
+			b. salt text					--> to randomize the password.
+			c. text password				--> centos
+		3. last password change
+			- since 1st jan 1970	-> epoch date
+		4. Minimum password age
+			0 days	-	imm. change the password
+		5. Maximum password age
+			99999 days ~> 273yrs	-> 60 days 
+		6. Warning days
+			- to show the warning (number of days) when pwd expires
+		7. Account inactive days
+		8. Account expiration
+		9. Unused till date/kept for future purpose.
+		
+Storage Management:
+--------------------
+file system in linux
+	- ext
+	- ext2
+	- ext3
+	- ext4
+	- xfs		--> default file system in almost all new linux OS.
+	- btrfs
+	- cramfs
+	- exfat
+	
+commands for storage in linux:
+	- du		--> disk usage
+	- lsblk		--> list block files.
+	- fdisk		--> for creating, modifying & deleting partition on a HDD.
+	- mount		--> used for mounting a file system in linux.
+	- umount	--> used for unmounting a file system in linux.
+	- df		--> listing the mounted partitions.
+
+HDDs in linux:
+----------------
+Centos/Redhat		->	/dev/sda(SCSI disk A)
+	- one disk	- /dev/sda
+		part1	- /dev/sda1
+		part2	- /dev/sda2
+		part3	- /dev/sda3
+	- 2nd disk	- /dev/sdb
+	- 3rd disk	- /dev/sdc
+Ubuntu				->	/dev/hda(Hard Disk A)
+
+Simple Partition:
+-----------------
+- creating a new partition in linux OS.
+- steps:
+	- add a new disk in the VM.
+	- reboot your linux machine.
+	- create partition using fdisk utility
+	- create a file system for this partition
+	- create a new mount point for this partition
+	- mount this partition
+		1. temporary	-> mount
+		2. permanent	-> /etc/fstab
+	- verify this partition
+
+how to get the disks available within linux machine, without reboot:
+--------------------------------------------------------------------
+	# ls -l /sys/class/scsi_host/
+	# grep mpt /sys/class/scsi_host/host*/proc_name
+	# echo "- - -" > /sys/class/scsi_host/host0/scan
+
