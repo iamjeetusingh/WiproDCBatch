@@ -1,0 +1,187 @@
+LVM
+----
+	- you can merge multiple disks (of different sizes) together to make one logical disk.
+	- we can extend this LVM whenever required.
+	- we can shrink this LVM whenever required.
+	- steps for LVM:
+		- add new 3 disks in the VM.
+		- reboot your linux machine.
+		- create partition using fdisk utility
+			# fdisk  /dev/sdc
+				/dev/sdc1
+			# fdisk  /dev/sdd
+				/dev/sdd1
+			# fdisk  /dev/sde
+				/dev/sde1
+		- create physical volume (PV)
+			# pvcreate
+				# pvcreate /dev/sdc1 /dev/sdd1 /dev/sde1	OR
+				# pvcreate /dev/sd[c-e]1
+			# pvdisplay
+			# pvremove
+			# pvs
+		- create a volume group (VG)
+			# vgcreate
+				# vgcreate  myvg  /dev/sdc1 /dev/sdd1 /dev/sde1
+			# vgdisplay
+			# vgremove
+			# vgs
+		- create a logical volume (lv)
+			# lvcreate
+				# lvcreate   -n   mylv   -l  100%FREE   myvg
+			# lvdisplay
+			# lvremove
+			# lvs
+		- create a file system for this logical volume
+			# mkfs.xfs /dev/myvg/mylv
+		- create a new mount point for this logical volume
+			# mkdir   /lvm
+		- mount this partition
+			1. temporary
+				# mount /dev/myvg/mylv   /lvm
+			2. permanent	-> /etc/fstab
+			/etc/fstab
+				- this file is used for loading all the partitions at mount point during the boot time.
+				- it contains 6 columns:
+					1. what to mount  			-> /dev/myvg/mylv
+					2. where to mount			-> /lvm
+					3. file system				-> xfs
+					4. permissions				-> defaults
+					5. backup while booting		-> 0
+					6. fsck						-> 0
+		- verify this partition
+		# mount -a
+
+- Package (software) Mgmt 
+	- install, update, information, remove
+	- extension of packages:
+		- windows 	--> .exe & .msi
+		- linux		--> .rpm, .deb, .dpkg
+	- package managers
+		- its a tool that helps you in 
+			- installation
+			- update/upgrading
+			- query / information
+			- uninstall / remove
+			- updating/patching the operating system
+		- like:
+			- RPM
+				- Redhat Package Manager
+				- its the default package manager in Centos & Redhat OS
+				- it mostly works OFFLINE (without internet)
+				- RPM has dependency issues.
+			- YUM
+				- Yellowdog updater modifier / Yellowdog update manager
+				- for centos, yum is pre-configured for online work.
+				- for offline work on centos, we need to configure it.
+				- its default package manager of redhat & centos
+				- it resolves the dependency issue.
+			- APT
+				- Advance Packaging Tool
+				- its the default package manager in Ubuntu.
+			- DNF
+				- DaNdiFied package manager
+				- its default package manager in CentOS 8 & Redhat 8 and above.
+			- DPKG
+				- Debian-based package manager
+				- its the default package manager in kali, backtrack.
+				
+installing a package:		
+	YUM - yum install <package-name>
+	APT - apt install <package-name>
+	DNF - dnf install <package-name>
+	
+installing packages:
+---------------------
+	- Offline
+		- DVD
+		- download & install
+	- Online
+		- servers
+			- Centos - Mirror servers (free to use)
+			- Redhat - RHN (RedHat Network -> RedHat Satellite servers) , subscriptions-based (paid)
+			- Ubuntu - own server (free)
+
+Naming convention of a package:	
+	name-version-release-architecture.rpm
+		- architecture
+			- i686		= 32bit
+			- x86_64	= 64bit
+			- noarch	= 32bit & 64bit
+
+
+RPM:
+	- install
+		# rpm  -ivh   <full-package-name>.rpm
+			i = install
+			v = verbose
+			h = hashing
+	- update
+		# rpm -Uvh <full-package-name>.rpm
+			U = Update
+	- query
+		# rpm -q <package-name>		// query of 1 package
+		# rpm -qa					// query of all installed packages
+	- uninstall
+		# rpm -e <package-name>		// e = erase / uninstall
+		
+YUM
+--------
+	- install
+		# yum install -y <package-name>
+	- update
+		# yum update -y <package-name>
+	- query / information
+		# yum query <package-name>
+	- uninstall	
+		# yum remove <package-name>
+	- list all installed packages
+		# yum list installed
+try:
+------------------------------		
+	- yum install -y squid
+	- yum update -y httpd		OR
+	  yum update -y telnet
+	- yum info httpd
+	- yum remove -y squid
+	- yum list installed
+
+Network configuration
+----------------------
+what we can do:
+	- IP configuration
+		- static
+		- dynamic
+	- DNS configuration
+	- Gateway
+Ways to deal with it.
+	- commands:
+		- nmcli (Network Manager Command Line Interface)
+		- nmtui (Network Manager text user Interface)
+		- ifconfig
+		- ip address
+		- DNS -> /etc/resolv.conf
+		- IP  -> /etc/sysconfig/network-scripts/ifcfg-<this may change>
+		- GUI	-> only for graphical machines
+	
+Service management in linux:
+----------------------------
+Old cmds:
+	# service <service-name> <action>
+		ex:-   service   network   restart
+New cmds:
+	# systemctl  <action>   <service-name>
+		ex:-   systemctl   restart httpd
+action:
+	- start
+	- stop
+	- disable
+	- enable
+	- is-active
+	- restart
+service-name (d = deamon -> background service)
+	- sshd
+	- firewalld
+	- httpd
+	- telnet
+	- vsftpd
