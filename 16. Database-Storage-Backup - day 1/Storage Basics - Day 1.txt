@@ -1,0 +1,147 @@
+Storage Basics:
+-----------------
+- storing data digitally.
+- 3 keywords:
+	- availability
+	- integrity
+	- security
+- types of storage:
+	- Primary storage
+		- RAM
+		- Cache
+	- Secondary storage
+		- HDD
+		- SSD
+		- NVMe
+	- long-term storage
+		- tape drives
+		- CD/DVD
+		- Blu-rays
+	- cloud storage
+		- AWS 		- S3 bucket
+		- Azure 	- Azure stroage account
+		- Google 	- Google cloud storage
+Storage Architecture:
+----------------------
+	1. Direct Attached Storage (DAS)
+		- it will be connected directly to the server/machine
+		- using a small, single cable.
+		- ex:
+			- external HDD
+			- external SSD
+			- Pendrives
+		- scability is the issue
+		
+	2. Network-Attached Storage (NAS)
+		- dedicated storage within the network
+		- uses file-based storage
+			- NFS
+				- Network File Share
+				- used for transferring data between linux to linux & windows to windows
+					L <--> L
+					W <--> W
+			- SMB
+				- Samba server
+				- mostly used in cloud technologies
+				- current version: 4.0
+				- cross platform
+					- L <--> W
+					- W <--> L
+					- L <--> L
+			- CIFS
+				- common internet file system
+		- easy to manage & share the data 
+		- performance is not good within a network.
+		
+	3. Storage Area Network (SAN)
+		- high speed, good performance storage designed for production
+		- it uses block level storage	
+			- iSCSI
+			- Fiber channel
+		- it is scable, supports virtualization
+		- Expensive & complex
+		- components of SAN
+			1. storage devices
+			2. server
+			3. networking hardware
+			4. software
+		- it works on MPIO (MultiPath Input Output)
+		- 3 types of SANs:
+			1. Fibre Channel 
+			2. IP SAN	(iSCSI)
+			3. Hybrid SAN
+
+Storage virtualization:
+------------------------
+	- logical instance of physical stroage to improve manageability
+	- technologies:
+		- VMWare vSAN
+		- Microsoft Storage Spaces
+		- Linux LVM (Logical Volume Manager)
+
+RAID:
+------
+	- performance & redundancy
+	- different levels:
+		- RAID 0	
+			- works on Striping
+			- useful in storing data faster
+			- no fault tolerence
+		- RAID 1
+			- works on mirroring concept.
+			- has fault tolerence.
+			- we are using only 50% of actual disk.
+		- RAID 5
+			- works on striping with parity
+			- used for higher redundancy
+			- even if one disk crashes, we can still recover the crashed disk information
+			- Minimum 3 disks of equal sizes are required.
+		- RAID 6 
+			- works on striping with dual parity
+			- used for high redundancy
+			- minimum 4 disks are required
+		- RAID 10
+			- Mirroring (RAID 1) + Striping (RAID 0)
+			- used for high speed & redundancy
+			- its n expensive solution
+			
+Storage Protocols:
+-------------------
+	- Fiber Channel (FC)
+		- high speed network, used in SAN 
+	- iSCSI
+		- Internet Small Computer System Interface
+		- used in TCP/IP for storage 
+	- NFS
+		- used in Linux/Unix/Windows
+	- SMB
+		- Server Message Block
+		- used in windows infra.
+		- used in multi-platform network.
+	- NVMe-oF
+		- NVMe Over Fabrics
+		- high performance protocol for remote flash storage
+		
+Storage spaces in Windows:
+-----------------------------
+	- Simple spaces
+		- simple, used for high performance storage
+		- minimum 2 disks are required
+	- Mirror spaces
+		- used for high performance
+		- this uses mirroring concept
+		- it uses by default ReFS 
+		- 2 types:
+			1. 2-way mirror
+				- stores 2 copies of ur data
+			2. 3-way mirror
+				- stores 3 copies of ur data
+	- Parity spaces:
+		- storing parity
+		- minimum of 3 disks are required
+		
+		
+TasK:
+-------
+- on DC, create a user with your last name & with full admin level permissions. create a folder name "resources" in c drive & give read & write access to only your user. 
+- access resources folder on client machine with your credentials and verify if its working or not.
