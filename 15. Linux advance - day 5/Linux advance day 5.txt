@@ -1,0 +1,141 @@
+Process management:
+--------------------
+  ps
+  ps -aux
+  ps -aux | grep jeetu
+  ps -fU jeetu
+  ps -fp 1,10012
+  ps -aux | grep 10012
+  ps -fp 1,10012
+  ps -e --forest
+  ps -C sshd
+  ps -C bash
+
+finding the processes with high CPU utilization
+	# ps -eo  pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head
+
+finding the processes with high memory utilization
+	# ps -eo  pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
+	
+to stop/end
+	1. terminate
+		- recommended/actual way to stop a process
+		- it stops the process & its child processes properly.
+		- it is invoked by using 
+			-> -15
+			-> SIGTERM
+	2. kill
+		- its the brutal way to end a process-
+		- its not the recommended way.
+		- it might damage the systems working also.
+		- it is invoked by using 
+			-> -9
+			-> SIGKILL
+
+types of processes:
+	1. foreground process	-> fg
+	2. background process	-> bg
+	
+- backup tools
+	- taking snapshots
+	- databases
+		- MySQL
+		- MariaDB
+	- SCP (Secure CoPy) command
+	- Backup (Full backup, incremental backup, differencing backup)
+	- Rsync (tool)
+	
+Archive 	
+	- collecting files & directories into a single file.
+	- tool for archiving in linux 
+		- tar (Tarball ARchive)
+			- extension: ".tar"
+
+Compress	
+	- to reduce the total file size.
+	- tools for compression in linux
+		- GZIP tool
+			- extension: .gz
+			- higher compression speed
+		- BZIP2
+			- extension: .bz2
+			- higher compression rate for lesser file size.
+		- ZIP
+			- extension: .zip
+
+create an archived file
+	1. create a tar file
+		# tar  -cvf  <tar-file-name>.tar  <file1 file2 dir1/ dir2/>
+			c = create
+			v = verbose
+			f = tar file name (with .tar extension)
+	2. now this tar file must be compressed
+		- if time is a matter     - GZIP (faster, file size will not be optimal)
+		- if time is not a matter - BZIP2 (slower, file size will be highly compressed)
+	3. this compressed file can be stored in 2 ways:
+		- manually
+		- automated
+			- AT job
+				- used for automating an event, but once in a life-time.
+			- Cron job
+				- used for automating an event, repetitively
+				- repetitively means
+					- every minute
+					- every hour
+					- every day
+					- every month
+	4. store it in the proper location
+		- local machine
+		- remote machine
+
+compress the file using GZIP tool:
+	# gzip     file-name.tar		
+	
+to uncompress the file using GZIP tool:
+	# gunzip   gzip-configBackup.tar.gz
+	
+compress the file using BZIP2 tool:
+	# bzip2    file-name
+	
+to uncompress the file using BZIP2 tool:
+	# bunzip2    bzip2-configBackup.tar.bz2
+	
+on server:
+-----------
+	- nmtui	-> 192.168.10.10/24
+	- nmcli networking off && nmcli networking on
+	- ifconfig | grep inet
+	- systemctl stop firewalld
+	- systemctl disable firewalld
+	- ping 192.168.10.11
+
+on client:
+-----------
+	- nmtui	-> 192.168.10.11/24
+	- nmcli networking off && nmcli networking on
+	- ifconfig | grep inet
+	- systemctl stop firewalld
+	- systemctl disable firewalld
+	- ping 192.168.10.10
+
+TS Steps:
+------------
+	- check the folder location (it SHOULDNOT be in any USER's home directories - on server)
+	- change the owner of the file & directories (on server & client both)
+	- check the password of user on receiver machine
+	- check ping
+	- check firewall
+
+
+Remotely accessing another machine:
+--------------------------------------
+ways:
+	1. telnet
+		- not the recommended way
+		- it is not secure
+	2. ssh
+		- this is the production way
+		- it is secure.
+		- syntax:	
+			# ssh    username@IPAddressOfRemoteMachine
+			# ssh    simba@192.168.10.10
