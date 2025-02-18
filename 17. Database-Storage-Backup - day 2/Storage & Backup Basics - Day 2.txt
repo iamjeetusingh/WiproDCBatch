@@ -1,0 +1,22 @@
+to create RAID 0 in windows 10:
+---------------------------------
+	- attach 2 disks of same size (5GB)
+	- go to the diskmgmt.msc console
+	- convert these basic disks into dynamic disks
+	- select any disk, & right click & select "New Striped Volumne"
+	- fill the required details & finish
+
+Dynamic disks
+	1. Mirror disk	-> RAID 1
+	2. Striped disk	-> RAID 0
+	3. Spanned disk	-> LVM
+	
+Ques - difference between virtual machine & containers?
+
+Physical machine	-->   virtual machines	-->  containers
+Container Engines - runs containers
+	ex:
+		- Docker
+		- Kubernetes (k8s)
+		
+
