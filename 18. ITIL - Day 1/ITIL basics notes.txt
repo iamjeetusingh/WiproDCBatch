@@ -1,0 +1,92 @@
+Service Value System (SVS)
+---------------------------
+	- it describes how the components and activities of a company work together 
+	- SVS components:
+		- Guiding principles
+			- recommends the guidance to the organization for the changes in its goals, strategies & type of work.
+		- Governance
+			- how to govern the whole organization in a structred way.
+		- SVC (Service Value Chain)
+			- its the set of interconnect activities
+		- Continual Improvement
+
+Service Value Chain (SVC)
+-------------------------
+	- its the central element of ITILv4
+	- it outlines the key activities required to create value for customer
+	- 6 SVCs
+		- Plan
+		- Engage
+		- Design and transition
+		- build
+		- deliver & support
+		- improve
+
+Four Dimensions of Service Management
+--------------------------------------
+	- Organization & people
+	- Information & technology
+	- Partner & Supplier
+	- Value streams & processes
+	
+RACI
+-----
+	- is a responsibility assignment matrix used ITIL 
+	- this is used for defining roles & responsibilities for any task or activities within a process.
+	- RACI means:
+		R = Responsible
+			- the person who does the task.
+		A = Accountable
+			- the person who owns the task & is answerable
+		C = Consulted
+			- People who provide input or expertise before a decision is made.
+		I = Informed
+			- People who need updates but do not contribute directly
+			
+Why to use RACI?
+	- avoids the confusion about who is responsible for what.
+	- ensures accountablity & smooth communication
+	- prevents the bottleneck issue in ITIL
+	
+DACI
+--------
+	- its a decision-making framework
+	- this helps in clarifying the roles & responsibilities for the whole team.
+	- DACI means:
+		- D = Driver
+		- A = Approver
+		- C = Contributor
+		- I = Informed
+	- details
+		- Driver = the person who is responsible for driving the decision-making process forward.
+		- Approver = is the person with the final authority to approve the decision
+		- Contributor = people who provide expertise, input or recommendations
+		- Informed = people who needs to be updated about the decision but don't participate actively.
+
+Why to use DACI
+	- ensures structured & efficient decision-making
+	- helps avoiding confusion over WHO MAKES THE FINAL CALL.
+	- less/no delays
+	
+
+RASCI:
+-------
+	- its an extension of RACI
+	- with an extra SUPPORTIVE (S) in it.
+- RASCI means:
+		R = Responsible
+			- the person who does the task.
+		A = Accountable
+			- the person who owns the task & is answerable
+		S = SUPPORTIVE
+			- the person who assists in completing the task.
+		C = Consulted
+			- People who provide input or expertise before a decision is made.
+		I = Informed
+			- People who need updates but do not contribute directly
+			
+Why to use RASCI?
+	- adds clarity by defining who helps in tha task
+	- Ensures smoother teamwork
+	- improves efficiency by avoiding overload on a single person
+	
